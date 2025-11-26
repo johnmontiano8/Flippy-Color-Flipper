@@ -13,7 +13,9 @@ A simple and elegant web application for generating beautiful random colors with
 
 ## Live Demo
 
-Open `index.html` in your web browser to start using the Color Flipper.
+Check out the live version here: [Flippy - Color Flipper Live Site](https://johnmontiano8.github.io/Flippy-Color-Flipper/)
+
+Alternatively, you can open `index.html` in your web browser to run it locally.
 
 ## How to Use
 
