@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <img src="/Color Flipper/FlippyLogo.png" alt="Logo" />
+          <h5>Flippy</h5>
+        </div>
+
+        <nav class="nav">
+          <ul>
+            <li><a href="#tool">Tool</a></li>
+            <li><a href="#code">Code</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="titleContent">
+          <h3>Flippy - Color Flipper</h3>
+          <p>Generate random colors with a click.</p>
+        </div>
+
+        <div class="colorContainer" id="tool">
+          <div class="colorCard" id="colorCard">
+            <h3>Current Color:</h3>
+            <h1 id="colorName">#ffffff</h1>
+          </div>
+
+          <div class="controls">
+            <div class="buttonContainer">
+              <p>Click or choose a button below to generate a color.</p>
+              <div class="topButton">
+                <button id="redButton" onclick="setColor('red')">Red</button>
+                <button id="greenButton" onclick="setColor('green')">
+                  Green
+                </button>
+                <button id="blueButton" onclick="setColor('blue')">Blue</button>
+              </div>
+
+              <div class="centerButton">
+                <button id="randomButton" onclick="randomColor()">
+                  <i class="fa-solid fa-shuffle"></i> Generate Random Color
+                </button>
+              </div>
+
+              <div class="bottomButton">
+                <button id="copyButton" onclick="copyColorCode()">
+                  <i class="fa-solid fa-copy"></i> Copy Color Code
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sourceCodeContainer" id="code">
+          <div class="sourceCode">
+            <h4>Source Code:</h4>
+            <pre>
+              <code>
+                // Get DOM Elements
+                const cardBody = document.getElementById("colorCard");
+                const colorName = document.getElementById("colorName");
+
+                // Helper function to convert RGB to Hex
+                function rgbToHex(r, g, b) {
+                  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+                }
+
+                // Helper function to convert named colors to hex
+                function colorToHex(color) {
+                  const colors = {
+                    red: "#ff0000",
+                    green: "#008000",
+                    blue: "#0000ff",
+                  };
+                  return colors[color.toLowerCase()] || color;
+                }
+
+                // Set Color Function
+                function setColor(name) {
+                  // Trigger flip animation
+                  cardBody.classList.add("flip-animation");
+
+                  // Change color and color name during the flip
+                  setTimeout(() => {
+                    cardBody.style.backgroundColor = name;
+                    const hexColor = colorToHex(name);
+                    colorName.textContent = hexColor;
+                  }, 300); // Change color at halfway point of animation
+
+                  // Remove animation class after animation completes
+                  setTimeout(() => {
+                    cardBody.classList.remove("flip-animation");
+                  }, 600);
+                }
+
+                // Random Color Function
+                function randomColor() {
+                  const red = Math.round(Math.random() * 255);
+                  const green = Math.round(Math.random() * 255);
+                  const blue = Math.round(Math.random() * 255);
+
+                  const color = `rgb(${red}, ${green}, ${blue})`;
+                  const hexColor = rgbToHex(red, green, blue);
+
+                  // Trigger flip animation
+                  cardBody.classList.add("flip-animation");
+
+                  // Change color and color name during the flip
+                  setTimeout(() => {
+                    cardBody.style.backgroundColor = color;
+                    colorName.textContent = hexColor;
+                  }, 300); // Change color at halfway point of animation
+
+                  // Remove animation class after animation completes
+                  setTimeout(() => {
+                    cardBody.classList.remove("flip-animation");
+                  }, 600);
+                }
+
+                randomColor();
+
+                // Copy Color Code Function
+                function copyColorCode() {
+                  const hexColor = colorName.textContent;
+                  navigator.clipboard
+                    .writeText(hexColor)
+                    .then(() => {
+                      alert(`Copied color code: ${hexColor}`);
+                    })
+                    .catch((err) => {
+                      // Fallback for older browsers
+                      const textArea = document.createElement("textarea");
+                      textArea.value = hexColor;
+                      document.body.appendChild(textArea);
+                      textArea.select();
+                      document.execCommand("copy");
+                      document.body.removeChild(textArea);
+                      alert(`Copied color code: ${hexColor}`);
+                    });
+                  }
+              </code>
+            </pre>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footerTop">
+          <div class="about">
+            <h4>About</h4>
+            <p>
+              A simple and elegant tool for generating beautiful random colors
+              for your designs.
+            </p>
+          </div>
+
+          <div class="quickLinks">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#tool">Tool</a></li>
+              <li><a href="#code">Code</a></li>
+            </ul>
+          </div>
+
+          <div class="contact">
+            <h4>Connect</h4>
+            <p>Follow us on social media for updates and new features.</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="footerBottom">
+          <p>© 2025 Flippy. All rights reserved</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
