@@ -66,8 +66,23 @@ function randomColor() {
 
 randomColor();
 
-// Add click event to color card
-cardBody.addEventListener("click", randomColor);
+// Add click event to color card - changes color and copies it
+cardBody.addEventListener("click", () => {
+  randomColor();
+  // Copy color code after a short delay to ensure new color is set
+  setTimeout(() => {
+    const hexColor = colorName.textContent;
+    navigator.clipboard.writeText(hexColor).catch(() => {
+      // Fallback for older browsers
+      const textArea = document.createElement("textarea");
+      textArea.value = hexColor;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    });
+  }, 350);
+});
 
 // Copy Color Code Function
 function copyColorCode() {
