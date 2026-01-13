@@ -30,12 +30,24 @@ header {
   align-items: center;
   gap: 5px;
   margin: 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: translateY(-3px);
 }
 
 .logo img {
   width: 40px;
   height: 40px;
   border-radius: 20%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover img {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .logo h5 {
@@ -60,6 +72,30 @@ nav li {
 nav a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.6);
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  position: relative;
+}
+
+nav a:hover {
+  color: rgba(0, 0, 0, 1);
+  transform: translateY(-2px);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 /* ================================ MAIN ================================ */
@@ -79,6 +115,18 @@ main .titleContent {
 main .titleContent h3 {
   font-size: 60px;
   margin-bottom: 20px;
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 main .titleContent p {
@@ -86,6 +134,16 @@ main .titleContent p {
   margin-top: 0;
   margin-bottom: 60px;
   color: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease 0.3s backwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ================================ CARD CONTAINER ================================*/
@@ -110,6 +168,24 @@ main .colorContainer {
   max-width: 750px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 0 auto 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease 0.5s backwards;
+}
+
+main .colorContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 main .colorCard {
@@ -190,6 +266,13 @@ main .sourceCodeContainer {
   max-width: 750px;
   margin: 0 auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease 0.7s backwards;
+}
+
+main .sourceCodeContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 main .sourceCode pre {
@@ -220,9 +303,14 @@ main .colorCard {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   perspective: 1000px;
   transform-style: preserve-3d;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
+}
+
+main .colorCard:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 main .colorCard h2 {
@@ -273,6 +361,16 @@ button {
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 button i {
@@ -345,6 +443,13 @@ footer {
 .footerTop ul li a {
   color: rgba(0, 0, 0, 0.6);
   text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  display: inline-block;
+}
+
+.footerTop ul li a:hover {
+  color: rgba(0, 0, 0, 1);
+  padding-left: 5px;
 }
 
 /* ================================ HR ================================ */
