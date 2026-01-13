@@ -81,29 +81,8 @@ function showCopyModal(colorCode) {
   }, 2000);
 }
 
-// Add click event to color card - changes color and copies it
-cardBody.addEventListener("click", () => {
-  randomColor();
-  // Copy color code after a short delay to ensure new color is set
-  setTimeout(() => {
-    const hexColor = colorName.textContent;
-    navigator.clipboard
-      .writeText(hexColor)
-      .then(() => {
-        showCopyModal(hexColor);
-      })
-      .catch(() => {
-        // Fallback for older browsers
-        const textArea = document.createElement("textarea");
-        textArea.value = hexColor;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textArea);
-        showCopyModal(hexColor);
-      });
-  }, 350);
-});
+// Add click event to color card - changes color only
+cardBody.addEventListener("click", randomColor);
 
 // Copy Color Code Function
 function copyColorCode() {
