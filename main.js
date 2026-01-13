@@ -66,6 +66,9 @@ function randomColor() {
 
 randomColor();
 
+// Add click event to color card
+cardBody.addEventListener("click", randomColor);
+
 // Copy Color Code Function
 function copyColorCode() {
   const hexColor = colorName.textContent;
