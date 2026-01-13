@@ -28,21 +28,22 @@
       </header>
 
       <main>
-        <div class="titleContent">
-          <h3>Flippy - Color Flipper</h3>
-          <p>Generate random colors with a click.</p>
-        </div>
-
-        <div class="colorContainer" id="tool">
-          <div class="colorCard" id="colorCard">
-            <h3>Current Color:</h3>
-            <h1 id="colorName">#ffffff</h1>
+        <div class="heroColorSection" id="tool">
+          <div class="titleContent">
+            <h3>Flippy - Color Flipper</h3>
+            <p>Generate random colors with a click.</p>
           </div>
 
-          <div class="controls">
-            <div class="buttonContainer">
-              <p>Click or choose a button below to generate a color.</p>
-              <div class="topButton">
+          <div class="colorContainer">
+            <div class="colorCard" id="colorCard">
+              <h3>Current Color:</h3>
+              <h1 id="colorName">#ffffff</h1>
+            </div>
+
+            <div class="controls">
+              <div class="buttonContainer">
+                <p>Click or choose a button below to generate a color.</p>
+                <div class="topButton">
                 <button id="redButton" onclick="setColor('red')">Red</button>
                 <button id="greenButton" onclick="setColor('green')">
                   Green
@@ -64,6 +65,7 @@
             </div>
           </div>
         </div>
+      </div>
 
         <div class="sourceCodeContainer" id="code">
           <div class="sourceCode">
