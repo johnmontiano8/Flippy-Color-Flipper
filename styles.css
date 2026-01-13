@@ -1,7 +1,13 @@
 /* ================================ BODY ================================ */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Sans-serif", "San Francisco", "Roboto", "Segoe UI", Tahoma,
     Verdana;
+  margin: 0;
+  padding: 0;
 }
 
 /* ================================ HEADER ================================ */
@@ -10,6 +16,13 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  header {
+    padding: 20px 40px;
+  }
 }
 
 .logo {
@@ -91,12 +104,12 @@ main .colorContainer {
   align-items: center;
   gap: 20px;
   background-color: white;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   width: 100%;
   max-width: 750px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 0 20px;
+  margin: 0 auto 20px;
 }
 
 main .colorCard {
@@ -166,16 +179,16 @@ main .colorCard h1 {
 
 /* ================================ SOURCE CODE CONTAINER ================================ */
 main .sourceCode {
-  margin: 10px;
+  margin: 0;
 }
 
 main .sourceCodeContainer {
   background-color: white;
-  padding: 0px 10px 10px 10px;
+  padding: 20px;
   border-radius: 10px;
   width: 100%;
   max-width: 750px;
-  margin: 20px;
+  margin: 0 auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -354,6 +367,22 @@ html {
 
 /* ================================ RESPONSIVE DESIGN ================================ */
 
+/* Medium Screens (tablets and small laptops) */
+@media screen and (max-width: 900px) {
+  main .titleContent h3 {
+    font-size: 50px;
+  }
+
+  main .colorContainer {
+    max-width: 680px;
+    padding: 15px;
+  }
+
+  main .sourceCodeContainer {
+    max-width: 680px;
+  }
+}
+
 /* Tablet Styles */
 @media screen and (max-width: 768px) {
   header {
@@ -386,9 +415,10 @@ html {
 
   main .colorContainer {
     flex-direction: column;
-    margin: 0 15px;
+    margin: 0 auto 20px;
     gap: 20px;
     padding: 20px;
+    max-width: calc(100% - 30px);
   }
 
   main .colorCard {
@@ -451,12 +481,11 @@ html {
   }
 
   main .colorContainer {
-    margin: 15px 5px;
-    padding: 20px;
+    margin: 0 auto 20px;
+    padding: 20px 15px;
     gap: 15px;
     flex-direction: column;
-    width: calc(100% - 10px);
-    box-sizing: border-box;
+    max-width: calc(100% - 30px);
   }
 
   main .colorCard {
@@ -495,10 +524,9 @@ html {
   }
 
   main .sourceCodeContainer {
-    margin: 15px 5px;
-    padding: 0px 5px 5px 5px;
-    width: calc(100% - 10px);
-    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 15px;
+    max-width: calc(100% - 30px);
   }
 
   main .sourceCode pre {
@@ -524,6 +552,37 @@ html {
 
   .footerBottom {
     margin: 0px 10px 0 10px;
+    font-size: 14px;
+    justify-content: center;
+  }
+}
+
+/* Extra Small Screens */
+@media screen and (max-width: 360px) {
+  .logo img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .logo h5 {
+    font-size: 14px;
+  }
+
+  main .titleContent h3 {
+    font-size: 28px;
+  }
+
+  main .titleContent p {
+    font-size: 14px;
+  }
+
+  main .colorCard {
+    width: 220px;
+    height: 220px;
+  }
+
+  button {
+    padding: 10px 20px;
     font-size: 14px;
   }
 }
