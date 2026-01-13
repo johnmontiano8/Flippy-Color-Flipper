@@ -66,21 +66,42 @@ function randomColor() {
 
 randomColor();
 
+// Get modal elements
+const modal = document.getElementById("copyModal");
+const copiedColorSpan = document.getElementById("copiedColor");
+
+// Function to show copy modal
+function showCopyModal(colorCode) {
+  copiedColorSpan.textContent = colorCode;
+  modal.classList.add("show");
+
+  // Hide modal after 2 seconds
+  setTimeout(() => {
+    modal.classList.remove("show");
+  }, 2000);
+}
+
 // Add click event to color card - changes color and copies it
 cardBody.addEventListener("click", () => {
   randomColor();
   // Copy color code after a short delay to ensure new color is set
   setTimeout(() => {
     const hexColor = colorName.textContent;
-    navigator.clipboard.writeText(hexColor).catch(() => {
-      // Fallback for older browsers
-      const textArea = document.createElement("textarea");
-      textArea.value = hexColor;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-    });
+    navigator.clipboard
+      .writeText(hexColor)
+      .then(() => {
+        showCopyModal(hexColor);
+      })
+      .catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = hexColor;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        showCopyModal(hexColor);
+      });
   }, 350);
 });
 
@@ -90,7 +111,7 @@ function copyColorCode() {
   navigator.clipboard
     .writeText(hexColor)
     .then(() => {
-      alert(`Copied color code: ${hexColor}`);
+      showCopyModal(hexColor);
     })
     .catch((err) => {
       // Fallback for older browsers
@@ -100,6 +121,6 @@ function copyColorCode() {
       textArea.select();
       document.execCommand("copy");
       document.body.removeChild(textArea);
-      alert(`Copied color code: ${hexColor}`);
+      showCopyModal(hexColor);
     });
 }
