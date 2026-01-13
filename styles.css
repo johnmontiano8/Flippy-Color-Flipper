@@ -124,7 +124,7 @@ main .titleContent {
 
 main .titleContent h3 {
   font-size: 60px;
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: 20px;
   animation: fadeInDown 0.8s ease;
 }
