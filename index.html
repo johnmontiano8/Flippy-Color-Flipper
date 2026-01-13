@@ -28,49 +28,38 @@
       </header>
 
       <main>
-        <div class="heroColorSection" id="tool">
-          <div class="titleContent">
-            <h3>Flippy - Color Flipper</h3>
-            <p>Generate random colors with a click.</p>
+        <div class="titleContent">
+          <h3>Flippy - Color Flipper</h3>
+          <p>Generate random colors with a click.</p>
+        </div>
+
+        <div class="colorContainer" id="tool">
+          <div class="colorCard" id="colorCard">
+            <h3>Current Color:</h3>
+            <h1 id="colorName">#ffffff</h1>
           </div>
 
-          <div class="colorContainer">
-            <div class="titleContent">
-              <h3>Flippy - Color Flipper</h3>
-              <p>Generate random colors with a click.</p>
-            </div>
-
-            <div class="colorContentWrapper">
-              <div class="colorCard" id="colorCard">
-                <h3>Current Color:</h3>
-                <h1 id="colorName">#ffffff</h1>
+          <div class="controls">
+            <div class="buttonContainer">
+              <p>Click or choose a button below to generate a color.</p>
+              <div class="topButton">
+                <button id="redButton" onclick="setColor('red')">Red</button>
+                <button id="greenButton" onclick="setColor('green')">
+                  Green
+                </button>
+                <button id="blueButton" onclick="setColor('blue')">Blue</button>
               </div>
 
-              <div class="controls">
-                <div class="buttonContainer">
-                  <p>Click or choose a button below to generate a color.</p>
-                  <div class="topButton">
-                    <button id="redButton" onclick="setColor('red')">Red</button>
-                    <button id="greenButton" onclick="setColor('green')">
-                      Green
-                    </button>
-                    <button id="blueButton" onclick="setColor('blue')">
-                      Blue
-                    </button>
-                  </div>
+              <div class="centerButton">
+                <button id="randomButton" onclick="randomColor()">
+                  <i class="fa-solid fa-shuffle"></i> Generate Random Color
+                </button>
+              </div>
 
-                  <div class="centerButton">
-                    <button id="randomButton" onclick="randomColor()">
-                      <i class="fa-solid fa-shuffle"></i> Generate Random Color
-                    </button>
-                  </div>
-
-                  <div class="bottomButton">
-                    <button id="copyButton" onclick="copyColorCode()">
-                      <i class="fa-solid fa-copy"></i> Copy Color Code
-                    </button>
-                  </div>
-                </div>
+              <div class="bottomButton">
+                <button id="copyButton" onclick="copyColorCode()">
+                  <i class="fa-solid fa-copy"></i> Copy Color Code
+                </button>
               </div>
             </div>
           </div>
